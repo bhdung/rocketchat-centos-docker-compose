@@ -1,3 +1,6 @@
+volumes:
+  mongodata
+
 services:
   rocketchat:
     image: registry.rocket.chat/rocketchat/rocket.chat:${RELEASE:-latest}
@@ -30,7 +33,7 @@ services:
     image: docker.io/bitnami/mongodb:${MONGODB_VERSION:-4.4}
     restart: on-failure
     volumes:
-      - /opt/Rocket.Chat:/bitnami/mongodb
+      - mongodata:/bitnami/mongodb
     environment:
       MONGODB_REPLICA_SET_MODE: primary
       MONGODB_REPLICA_SET_NAME: ${MONGODB_REPLICA_SET_NAME:-rs0}
