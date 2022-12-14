@@ -7,7 +7,7 @@ After=docker.service
 Type=oneshot
 RemainAfterExit=yes
 WorkingDirectory=/opt/Rocket.Chat
-ExecStart=/usr/local/bin/docker-compose up -d
+ExecStart=/bin/bash -c '/usr/local/bin/docker-compose up -d && /bin/bash docker ps -a'
 ExecStop=/usr/local/bin/docker-compose down
 TimeoutStartSec=0
 
